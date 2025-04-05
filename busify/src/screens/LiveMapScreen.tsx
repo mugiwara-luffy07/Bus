@@ -14,7 +14,7 @@ const LiveMapScreen = () => {
     longitude: 80.2707,
     latitudeDelta: 0.05,
     longitudeDelta: 0.05,
-  });
+  });//
   const [buses, setBuses] = useState<{ latitude: number; longitude: number; busNumber: string }[]>([]);
   const [filteredBuses, setFilteredBuses] = useState<{ latitude: number; longitude: number; busNumber: string }[]>([]);
   const [selectedBus, setSelectedBus] = useState<{ latitude: number; longitude: number; busNumber: string } | null>(null);
