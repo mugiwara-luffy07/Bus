@@ -1,6 +1,7 @@
 // src/firebase/config.ts
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref } from 'firebase/database'; // Import 'ref' here
+import { getDatabase, ref } from 'firebase/database';  // Import 'ref' here
+import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyA4FZdgX1V1HOwTJYER38hYQN5HVyXpp6w',
@@ -15,7 +16,9 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Get the database reference
+// Initialize Firestore and Realtime Database
+const firestore = getFirestore(app);
 const database = getDatabase(app);
 
-export { app, database, ref };  // Make sure 'ref' is exported here
+// Export Firestore, Realtime Database, and 'ref' for use in your app
+export { app, firestore, database, ref };
