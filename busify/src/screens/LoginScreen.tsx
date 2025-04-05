@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Image } from 'react-native';
 
 const LoginScreen = ({ navigation }: any) => {
   const [registerNo, setRegisterNo] = useState('');
@@ -25,6 +25,9 @@ const LoginScreen = ({ navigation }: any) => {
 
   return (
     <View style={styles.container}>
+      {/* Add logo here */}
+      <Image source={require('../assets/Home-logo.png')} style={styles.logo} />
+      
       <Text style={styles.title}>Student Login</Text>
       
       <TextInput
@@ -56,6 +59,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 20,
     backgroundColor: '#fff',
+  },
+  logo: {
+    width: 100,
+    height: 100,
+    alignSelf: 'center',
+    marginBottom: 20, // Space between the logo and the title
   },
   title: {
     fontSize: 24,
