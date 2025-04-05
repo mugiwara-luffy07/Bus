@@ -1,0 +1,21 @@
+{
+    "buses": {
+      "bus_1": {
+        "busNumber": "101",
+        "seats": {
+          "totalSeats": 30,
+          "availableSeats": 15,
+          "seatStatus": [true, true, false, true, false, true, false, true, false, true, true, true, false, true, true, true, false, true, false, true, true, true, false, true, true, false, false, true, true, true]
+        }
+      },
+      "bus_2": {
+        "busNumber": "102",
+        "seats": {
+          "totalSeats": 40,
+          "availableSeats": 25,
+          "seatStatus": [true, true, false, true, true, true, true, false, false, true, true, true, false, true, false, true, true, false, true, true, true, false, true, true, false, true, true, true, false, true, false, false, true, true, true, false, true, true, true, true]
+        }
+      }
+    }
+  }
+  

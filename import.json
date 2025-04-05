@@ -1,15 +1,104 @@
 {
-    "buses": {
-      "bus1": {
-        "busNumber": "123",
-        "latitude": 13.05,
-        "longitude": 80.25
-      },
-      "bus2": {
-        "busNumber": "124",
-        "latitude": 13.08,
-        "longitude": 80.28
+  "buses": {
+    "bus1": {
+      "busNumber": "Bus 101",
+      "latitude": 13.0857,
+      "longitude": 80.2707,
+      "seats": {
+        "totalSeats": 30,
+        "availableSeats": 15,
+        "seatStatus": [true, true, false, true, false, true, false, true, false, true, true, true, false, true, true, true, false, true, false, true, true, true, false, true, true, false, false, true, true, true]
+      }
+    },
+    "bus2": {
+      "busNumber": "Bus 102",
+      "latitude": 13.0867,
+      "longitude": 80.2717,
+      "seats": {
+        "totalSeats": 40,
+        "availableSeats": 20,
+        "seatStatus": [true, false, true, true, false, true, true, true, false, true, true, true, false, true, true, false, true, true, false, true, false, true, true, false, true, true, true, true, false, true, false, false, true, true, true, false]
+      }
+    },
+    "bus3": {
+      "busNumber": "Bus 103",
+      "latitude": 13.0877,
+      "longitude": 80.2727,
+      "seats": {
+        "totalSeats": 35,
+        "availableSeats": 18,
+        "seatStatus": [true, true, true, false, true, false, true, false, true, true, true, false, true, false, true, true, true, false, true, true, true, false, true, true, true, false, true, false, true, true, false]
+      }
+    },
+    "bus4": {
+      "busNumber": "Bus 104",
+      "latitude": 13.0887,
+      "longitude": 80.2737,
+      "seats": {
+        "totalSeats": 40,
+        "availableSeats": 22,
+        "seatStatus": [true, true, false, true, true, true, false, true, true, true, false, true, false, true, false, true, true, true, true, true, true, false, true, true, false, true, true, true, true, false, false]
+      }
+    },
+    "bus5": {
+      "busNumber": "Bus 105",
+      "latitude": 13.0897,
+      "longitude": 80.2747,
+      "seats": {
+        "totalSeats": 50,
+        "availableSeats": 30,
+        "seatStatus": [true, true, true, false, false, true, true, false, true, true, true, false, true, true, true, true, true, true, true, false, true, false, true, true, false, false, true, false, true, true, false, true, true, true, true, true, false, false, true, true, true]
+      }
+    },
+    "bus6": {
+      "busNumber": "Bus 106",
+      "latitude": 13.0907,
+      "longitude": 80.2757,
+      "seats": {
+        "totalSeats": 25,
+        "availableSeats": 12,
+        "seatStatus": [true, false, true, true, false, true, false, true, true, true, true, false, true, false, true, true, false, true, false, false, true, true, true, false, true]
+      }
+    },
+    "bus7": {
+      "busNumber": "Bus 107",
+      "latitude": 13.0917,
+      "longitude": 80.2767,
+      "seats": {
+        "totalSeats": 45,
+        "availableSeats": 25,
+        "seatStatus": [true, true, false, true, true, true, false, true, true, true, false, true, true, true, false, true, false, true, true, true, false, true, true, true, true, true, false, true, true, false]
+      }
+    },
+    "bus8": {
+      "busNumber": "Bus 108",
+      "latitude": 13.0927,
+      "longitude": 80.2777,
+      "seats": {
+        "totalSeats": 60,
+        "availableSeats": 35,
+        "seatStatus": [true, false, true, true, true, true, false, true, true, false, true, true, true, false, true, true, true, false, true, false, true, true, true, true, true, false, true, true, true, true, false, false, true, true, true, false]
+      }
+    },
+    "bus9": {
+      "busNumber": "Bus 109",
+      "latitude": 13.0937,
+      "longitude": 80.2787,
+      "seats": {
+        "totalSeats": 30,
+        "availableSeats": 18,
+        "seatStatus": [true, true, true, false, true, false, true, true, true, false, true, true, true, false, true, true, false, true, true, true, false, false, true, true, false, true, true, true]
+      }
+    },
+    "bus10": {
+      "busNumber": "Bus 110",
+      "latitude": 13.0947,
+      "longitude": 80.2797,
+      "seats": {
+        "totalSeats": 50,
+        "availableSeats": 35,
+        "seatStatus": [true, false, true, true, false, true, true, false, true, true, true, false, true, true, false, true, true, true, false, true, true, true, true, false, false, true, true, true, false, true, true]
       }
     }
   }
-  
+}
