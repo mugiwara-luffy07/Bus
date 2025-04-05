@@ -1,7 +1,6 @@
 // src/firebase/config.ts
 import { initializeApp } from 'firebase/app';
-import { getDatabase } from 'firebase/database';
-import { getAuth } from 'firebase/auth';
+import { getDatabase, ref } from 'firebase/database'; // Make sure to import `ref` here
 
 const firebaseConfig = {
   apiKey: 'AIzaSyA4FZdgX1V1HOwTJYER38hYQN5HVyXpp6w',
@@ -16,8 +15,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Export initialized services
-const auth = getAuth(app);
+// Get the database reference
 const database = getDatabase(app);
 
-export { app, auth, database };
+export { app, database, ref };  // Export `ref` to use it in your components

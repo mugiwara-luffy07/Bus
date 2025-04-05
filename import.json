@@ -8,6 +8,18 @@
         "totalSeats": 30,
         "availableSeats": 15,
         "seatStatus": [true, true, false, true, false, true, false, true, false, true, true, true, false, true, true, true, false, true, false, true, true, true, false, true, true, false, false, true, true, true]
+      },
+      "route": {
+        "morning": [
+          { "stop": "Stop 1", "time": "8:00 AM" },
+          { "stop": "Stop 2", "time": "8:30 AM" },
+          { "stop": "Stop 3", "time": "9:00 AM" }
+        ],
+        "evening": [
+          { "stop": "Stop 1", "time": "6:00 PM" },
+          { "stop": "Stop 2", "time": "6:30 PM" },
+          { "stop": "Stop 3", "time": "7:00 PM" }
+        ]
       }
     },
     "bus2": {
@@ -18,6 +30,16 @@
         "totalSeats": 40,
         "availableSeats": 20,
         "seatStatus": [true, false, true, true, false, true, true, true, false, true, true, true, false, true, true, false, true, true, false, true, false, true, true, false, true, true, true, true, false, true, false, false, true, true, true, false]
+      },
+      "route": {
+        "morning": [
+          { "stop": "Stop A", "time": "7:30 AM" },
+          { "stop": "Stop B", "time": "8:00 AM" }
+        ],
+        "evening": [
+          { "stop": "Stop A", "time": "5:00 PM" },
+          { "stop": "Stop B", "time": "5:30 PM" }
+        ]
       }
     },
     "bus3": {
@@ -28,6 +50,16 @@
         "totalSeats": 35,
         "availableSeats": 18,
         "seatStatus": [true, true, true, false, true, false, true, false, true, true, true, false, true, false, true, true, true, false, true, true, true, false, true, true, true, false, true, false, true, true, false]
+      },
+      "route": {
+        "morning": [
+          { "stop": "Stop X", "time": "8:15 AM" },
+          { "stop": "Stop Y", "time": "8:45 AM" }
+        ],
+        "evening": [
+          { "stop": "Stop X", "time": "6:15 PM" },
+          { "stop": "Stop Y", "time": "6:45 PM" }
+        ]
       }
     },
     "bus4": {
@@ -38,6 +70,16 @@
         "totalSeats": 40,
         "availableSeats": 22,
         "seatStatus": [true, true, false, true, true, true, false, true, true, true, false, true, false, true, false, true, true, true, true, true, true, false, true, true, false, true, true, true, true, false, false]
+      },
+      "route": {
+        "morning": [
+          { "stop": "Stop 1", "time": "9:00 AM" },
+          { "stop": "Stop 2", "time": "9:30 AM" }
+        ],
+        "evening": [
+          { "stop": "Stop 1", "time": "7:00 PM" },
+          { "stop": "Stop 2", "time": "7:30 PM" }
+        ]
       }
     },
     "bus5": {
@@ -48,6 +90,16 @@
         "totalSeats": 50,
         "availableSeats": 30,
         "seatStatus": [true, true, true, false, false, true, true, false, true, true, true, false, true, true, true, true, true, true, true, false, true, false, true, true, false, false, true, false, true, true, false, true, true, true, true, true, false, false, true, true, true]
+      },
+      "route": {
+        "morning": [
+          { "stop": "Stop 1", "time": "7:45 AM" },
+          { "stop": "Stop 2", "time": "8:15 AM" }
+        ],
+        "evening": [
+          { "stop": "Stop 1", "time": "5:45 PM" },
+          { "stop": "Stop 2", "time": "6:15 PM" }
+        ]
       }
     },
     "bus6": {
@@ -58,6 +110,16 @@
         "totalSeats": 25,
         "availableSeats": 12,
         "seatStatus": [true, false, true, true, false, true, false, true, true, true, true, false, true, false, true, true, false, true, false, false, true, true, true, false, true]
+      },
+      "route": {
+        "morning": [
+          { "stop": "Stop A", "time": "8:45 AM" },
+          { "stop": "Stop B", "time": "9:15 AM" }
+        ],
+        "evening": [
+          { "stop": "Stop A", "time": "6:45 PM" },
+          { "stop": "Stop B", "time": "7:15 PM" }
+        ]
       }
     },
     "bus7": {
@@ -68,6 +130,16 @@
         "totalSeats": 45,
         "availableSeats": 25,
         "seatStatus": [true, true, false, true, true, true, false, true, true, true, false, true, true, true, false, true, false, true, true, true, false, true, true, true, true, true, false, true, true, false]
+      },
+      "route": {
+        "morning": [
+          { "stop": "Stop 1", "time": "7:00 AM" },
+          { "stop": "Stop 2", "time": "7:30 AM" }
+        ],
+        "evening": [
+          { "stop": "Stop 1", "time": "5:30 PM" },
+          { "stop": "Stop 2", "time": "6:00 PM" }
+        ]
       }
     },
     "bus8": {
@@ -78,6 +150,16 @@
         "totalSeats": 60,
         "availableSeats": 35,
         "seatStatus": [true, false, true, true, true, true, false, true, true, false, true, true, true, false, true, true, true, false, true, false, true, true, true, true, true, false, true, true, true, true, false, false, true, true, true, false]
+      },
+      "route": {
+        "morning": [
+          { "stop": "Stop 1", "time": "9:30 AM" },
+          { "stop": "Stop 2", "time": "10:00 AM" }
+        ],
+        "evening": [
+          { "stop": "Stop 1", "time": "7:30 PM" },
+          { "stop": "Stop 2", "time": "8:00 PM" }
+        ]
       }
     },
     "bus9": {
@@ -88,6 +170,16 @@
         "totalSeats": 30,
         "availableSeats": 18,
         "seatStatus": [true, true, true, false, true, false, true, true, true, false, true, true, true, false, true, true, false, true, true, true, false, false, true, true, false, true, true, true]
+      },
+      "route": {
+        "morning": [
+          { "stop": "Stop 1", "time": "8:30 AM" },
+          { "stop": "Stop 2", "time": "9:00 AM" }
+        ],
+        "evening": [
+          { "stop": "Stop 1", "time": "6:30 PM" },
+          { "stop": "Stop 2", "time": "7:00 PM" }
+        ]
       }
     },
     "bus10": {
@@ -98,6 +190,16 @@
         "totalSeats": 50,
         "availableSeats": 35,
         "seatStatus": [true, false, true, true, false, true, true, false, true, true, true, false, true, true, false, true, true, true, false, true, true, true, true, false, false, true, true, true, false, true, true]
+      },
+      "route": {
+        "morning": [
+          { "stop": "Stop 1", "time": "7:15 AM" },
+          { "stop": "Stop 2", "time": "7:45 AM" }
+        ],
+        "evening": [
+          { "stop": "Stop 1", "time": "5:15 PM" },
+          { "stop": "Stop 2", "time": "5:45 PM" }
+        ]
       }
     }
   }
