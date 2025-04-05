@@ -1,11 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Dimensions, FlatList, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  StyleSheet,
+  Dimensions,
+  FlatList,
+  TouchableOpacity,
+} from 'react-native';
 import MapView, { Marker, Region } from 'react-native-maps';
-import { getDatabase, ref, onValue, query, orderByChild, equalTo, get } from 'firebase/database';
-import { database } from '../firebase/config'; // Adjust the import path as needed
+import {
+  getDatabase,
+  ref,
+  onValue,
+  query,
+  orderByChild,
+  equalTo,
+  get,
+} from 'firebase/database';
+import { database } from '../firebase/config'; // Adjust path as needed
 
 const screenWidth = Dimensions.get('window').width;
-const screenHeight = Dimensions.get('window').height;
 
 const LiveMapScreen = () => {
   const [busNumber, setBusNumber] = useState('');
@@ -14,24 +30,33 @@ const LiveMapScreen = () => {
     longitude: 80.2707,
     latitudeDelta: 0.05,
     longitudeDelta: 0.05,
-  });//
-  const [buses, setBuses] = useState<{ latitude: number; longitude: number; busNumber: string }[]>([]);
-  const [filteredBuses, setFilteredBuses] = useState<{ latitude: number; longitude: number; busNumber: string }[]>([]);
-  const [selectedBus, setSelectedBus] = useState<{ latitude: number; longitude: number; busNumber: string } | null>(null);
-  const [showDropdown, setShowDropdown] = useState(true); // Control visibility of the dropdown
-//test git
+  });
+
+  const [buses, setBuses] = useState<
+    { latitude: number; longitude: number; busNumber: string }[]
+  >([]);
+  const [filteredBuses, setFilteredBuses] = useState<
+    { latitude: number; longitude: number; busNumber: string }[]
+  >([]);
+  const [selectedBus, setSelectedBus] = useState<{
+    latitude: number;
+    longitude: number;
+    busNumber: string;
+  } | null>(null);
+  const [showDropdown, setShowDropdown] = useState(true);
+
   useEffect(() => {
     const busesRef = ref(database, 'buses');
     const unsubscribe = onValue(busesRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
         const formattedBuses = Object.values(data).map((bus: any) => ({
-          latitude: bus.latitude,
-          longitude: bus.longitude,
+          latitude: Number(bus.latitude),
+          longitude: Number(bus.longitude),
           busNumber: bus.busNumber,
         }));
         setBuses(formattedBuses);
-        setFilteredBuses(formattedBuses);  // Show all buses initially
+        setFilteredBuses(formattedBuses);
       }
     });
 
@@ -41,20 +66,36 @@ const LiveMapScreen = () => {
   const handleSearch = async () => {
     if (!busNumber) return;
 
-    const busRef = query(ref(database, 'buses'), orderByChild('busNumber'), equalTo(busNumber));
-    const snapshot = await get(busRef); 
+    const busRef = query(
+      ref(database, 'buses'),
+      orderByChild('busNumber'),
+      equalTo(busNumber)
+    );
+    const snapshot = await get(busRef);
     const data = snapshot.val();
 
     if (data) {
-      const bus = Object.values(data)[0] as { latitude: number; longitude: number; busNumber: string };
-      setSelectedBus(bus); // Set the selected bus to be shown on the map
-      setRegion({
-        latitude: bus.latitude,
-        longitude: bus.longitude,
-        latitudeDelta: 0.01,
-        longitudeDelta: 0.01,
-      });
-      setShowDropdown(false); // Hide the dropdown after selecting a bus
+      const bus = Object.values(data)[0] as {
+        latitude: number;
+        longitude: number;
+        busNumber: string;
+      };
+
+      const latitude = Number(bus.latitude);
+      const longitude = Number(bus.longitude);
+
+      if (!isNaN(latitude) && !isNaN(longitude)) {
+        setSelectedBus({ ...bus, latitude, longitude });
+        setRegion({
+          latitude,
+          longitude,
+          latitudeDelta: 0.01,
+          longitudeDelta: 0.01,
+        });
+        setShowDropdown(false);
+      } else {
+        alert('Invalid bus coordinates!');
+      }
     } else {
       alert('Bus not found!');
     }
@@ -67,33 +108,45 @@ const LiveMapScreen = () => {
       bus.busNumber.toLowerCase().includes(text.toLowerCase())
     );
     setFilteredBuses(filtered);
-    setShowDropdown(true); // Show dropdown when user starts typing
+    setShowDropdown(true);
   };
 
-  const handleBusSelect = (bus: any) => {
-    setBusNumber(bus.busNumber); // Set selected bus number to the input
-    setSelectedBus(bus); // Set the selected bus to be shown on the map
-    setRegion({
-      latitude: bus.latitude,
-      longitude: bus.longitude,
-      latitudeDelta: 0.01,
-      longitudeDelta: 0.01,
-    });
-    setShowDropdown(false); // Hide the dropdown after bus selection
+  const handleBusSelect = (bus: {
+    latitude: number;
+    longitude: number;
+    busNumber: string;
+  }) => {
+    const latitude = Number(bus.latitude);
+    const longitude = Number(bus.longitude);
+
+    if (!isNaN(latitude) && !isNaN(longitude)) {
+      setBusNumber(bus.busNumber);
+      setSelectedBus({ ...bus, latitude, longitude });
+      setRegion({
+        latitude,
+        longitude,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01,
+      });
+      setShowDropdown(false);
+    } else {
+      alert('Invalid coordinates!');
+    }
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Live Bus Tracker</Text>
+
       <TextInput
         style={styles.input}
         placeholder="Enter Bus Number"
         value={busNumber}
         onChangeText={handleInputChange}
       />
+
       <Button title="Search" onPress={handleSearch} />
-      
-      {/* Display filtered buses in a dropdown */}
+
       {showDropdown && busNumber && (
         <FlatList
           data={filteredBuses}
@@ -101,25 +154,26 @@ const LiveMapScreen = () => {
           style={styles.dropdown}
           renderItem={({ item }) => (
             <TouchableOpacity onPress={() => handleBusSelect(item)}>
-              <Text style={styles.dropdownItem}>
-                {item.busNumber}
-              </Text>
+              <Text style={styles.dropdownItem}>{item.busNumber}</Text>
             </TouchableOpacity>
           )}
         />
       )}
 
-      {/* Map view displaying only selected bus */}
       <MapView style={styles.map} region={region}>
-        {selectedBus && (
-          <Marker
-            coordinate={{
-              latitude: selectedBus.latitude,
-              longitude: selectedBus.longitude,
-            }}
-            title={`Bus ${selectedBus.busNumber}`}
-          />
-        )}
+        {selectedBus &&
+          typeof selectedBus.latitude === 'number' &&
+          typeof selectedBus.longitude === 'number' &&
+          !isNaN(selectedBus.latitude) &&
+          !isNaN(selectedBus.longitude) && (
+            <Marker
+              coordinate={{
+                latitude: selectedBus.latitude,
+                longitude: selectedBus.longitude,
+              }}
+              title={`Bus ${selectedBus.busNumber}`}
+            />
+          )}
       </MapView>
     </View>
   );

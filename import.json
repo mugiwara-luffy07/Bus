@@ -2,6 +2,8 @@
   "buses": {
     "bus1": {
       "busNumber": "Bus 101",
+      "latitude": 13.0827,
+      "longitude": 80.2707,
       "route": {
         "morning": [
           { "stop": "Stop 1", "time": "8:00 AM" },
@@ -21,6 +23,8 @@
     },
     "bus2": {
       "busNumber": "Bus 102",
+      "latitude": 13.0800,
+      "longitude": 80.2700,
       "route": {
         "morning": [
           { "stop": "Stop A", "time": "7:30 AM" },
@@ -37,6 +41,8 @@
     },
     "bus3": {
       "busNumber": "Bus 103",
+      "latitude": 13.0812,
+      "longitude": 80.2720,
       "route": {
         "morning": [
           { "stop": "Stop X", "time": "8:15 AM" },
@@ -53,6 +59,8 @@
     },
     "bus4": {
       "busNumber": "Bus 104",
+      "latitude": 13.0820,
+      "longitude": 80.2710,
       "route": {
         "morning": [
           { "stop": "Stop 1", "time": "9:00 AM" },
@@ -67,6 +75,8 @@
     },
     "bus5": {
       "busNumber": "Bus 105",
+      "latitude": 13.0835,
+      "longitude": 80.2740,
       "route": {
         "morning": [
           { "stop": "Stop 1", "time": "7:45 AM" },
@@ -83,6 +93,8 @@
     },
     "bus6": {
       "busNumber": "Bus 106",
+      "latitude": 13.0845,
+      "longitude": 80.2750,
       "route": {
         "morning": [
           { "stop": "Stop A", "time": "8:45 AM" },
@@ -97,6 +109,8 @@
     },
     "bus7": {
       "busNumber": "Bus 107",
+      "latitude": 13.0850,
+      "longitude": 80.2760,
       "route": {
         "morning": [
           { "stop": "Stop 1", "time": "7:00 AM" },
@@ -113,6 +127,8 @@
     },
     "bus8": {
       "busNumber": "Bus 108",
+      "latitude": 13.0860,
+      "longitude": 80.2770,
       "route": {
         "morning": [
           { "stop": "Stop 1", "time": "9:30 AM" },
@@ -127,6 +143,8 @@
     },
     "bus9": {
       "busNumber": "Bus 109",
+      "latitude": 13.0870,
+      "longitude": 80.2780,
       "route": {
         "morning": [
           { "stop": "Stop 1", "time": "8:30 AM" },
@@ -143,6 +161,8 @@
     },
     "bus10": {
       "busNumber": "Bus 110",
+      "latitude": 13.0880,
+      "longitude": 80.2790,
       "route": {
         "morning": [
           { "stop": "Stop 1", "time": "7:15 AM" },
