@@ -19,7 +19,7 @@ const LiveMapScreen = () => {
   const [filteredBuses, setFilteredBuses] = useState<{ latitude: number; longitude: number; busNumber: string }[]>([]);
   const [selectedBus, setSelectedBus] = useState<{ latitude: number; longitude: number; busNumber: string } | null>(null);
   const [showDropdown, setShowDropdown] = useState(true); // Control visibility of the dropdown
-
+//test git
   useEffect(() => {
     const busesRef = ref(database, 'buses');
     const unsubscribe = onValue(busesRef, (snapshot) => {
