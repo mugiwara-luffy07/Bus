@@ -1,55 +1,91 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
-import { ref, get } from 'firebase/database';
-import { database } from '../firebase/config';  // Correct import
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, FlatList, Button } from 'react-native';
+import RNPickerSelect from 'react-native-picker-select';
+
+// Type definition for Bus
+type BusType = {
+  busNumber: string;
+  route: {
+    morning: { stop: string; time: string }[];
+    evening: { stop: string; time: string }[];
+  };
+};
 
 const BusRoutes = () => {
-  const [buses, setBuses] = useState<any[]>([]);
+  const [selectedBus, setSelectedBus] = useState<string | null>(null);
+  const [filteredBus, setFilteredBus] = useState<BusType | null>(null);
 
-  // Fetch bus data from Firebase
-  useEffect(() => {
-    const fetchData = async () => {
-      const busesRef = ref(database, 'buses'); // Reference to the 'buses' node
-      const snapshot = await get(busesRef);  // Fetch data
-      const data = snapshot.val();
+  const buses = [
+    // Your bus data here (simplified example)
+    {
+      busNumber: "Bus 101",
+      route: {
+        morning: [
+          { stop: "Stop 1", time: "8:00 AM" },
+          { stop: "Stop 2", time: "8:30 AM" },
+          { stop: "Stop 3", time: "9:00 AM" },
+        ],
+        evening: [
+          { stop: "Stop 1", time: "6:00 PM" },
+          { stop: "Stop 2", time: "6:30 PM" },
+          { stop: "Stop 3", time: "7:00 PM" },
+        ],
+      },
+    },
+    // Add other buses here in the same format
+  ];
 
-      if (data) {
-        const busList: any[] = Object.values(data).map((bus: any) => ({
-          busNumber: bus.busNumber,
-          morningRoute: bus.route.morning,
-          eveningRoute: bus.route.evening,
-        }));
-        setBuses(busList);
-      }
-    };
+  const handleSearch = () => {
+    const bus = buses.find((bus) => bus.busNumber === selectedBus);
+    if (bus) {
+      setFilteredBus(bus);
+    } else {
+      setFilteredBus(null); // Clear if no bus found
+    }
+  };
 
-    fetchData();
-  }, []);
+  const renderRoute = (route: { stop: string; time: string }[]) => {
+    return (
+      <FlatList
+        data={route}
+        renderItem={({ item }) => (
+          <Text style={styles.routeText}>
+            {item.stop} - {item.time}
+          </Text>
+        )}
+        keyExtractor={(item, index) => index.toString()}
+      />
+    );
+  };
+
+  // Preparing bus numbers for the picker
+  const busNumbers = buses.map(bus => ({
+    label: bus.busNumber,
+    value: bus.busNumber,
+  }));
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>🚌 Bus Routes</Text>
-      <FlatList
-        data={buses}
-        keyExtractor={(item) => item.busNumber}
-        renderItem={({ item }) => (
-          <View style={styles.busItem}>
-            <Text style={styles.busNumber}>{item.busNumber}</Text>
-            <Text style={styles.routeTitle}>Morning Route:</Text>
-            {item.morningRoute.map((stop: any, index: number) => (
-              <Text key={index} style={styles.routeInfo}>
-                {stop.stop} - {stop.time}
-              </Text>
-            ))}
-            <Text style={styles.routeTitle}>Evening Route:</Text>
-            {item.eveningRoute.map((stop: any, index: number) => (
-              <Text key={index} style={styles.routeInfo}>
-                {stop.stop} - {stop.time}
-              </Text>
-            ))}
-          </View>
-        )}
+      <RNPickerSelect
+        onValueChange={(value) => setSelectedBus(value)}
+        items={busNumbers}
+        placeholder={{ label: "Select Bus Number", value: null }}
       />
+      <Button title="Search" onPress={handleSearch} />
+      
+      {filteredBus ? (
+        <View style={styles.busContainer}>
+          <Text style={styles.busNumber}>Bus: {filteredBus.busNumber}</Text>
+
+          <Text style={styles.routeHeader}>Morning Route:</Text>
+          {renderRoute(filteredBus.route.morning)}
+
+          <Text style={styles.routeHeader}>Evening Route:</Text>
+          {renderRoute(filteredBus.route.evening)}
+        </View>
+      ) : (
+        selectedBus && <Text style={styles.notFoundText}>Bus not found.</Text>
+      )}
     </View>
   );
 };
@@ -57,32 +93,39 @@ const BusRoutes = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
+    padding: 16,
+    backgroundColor: '#f7f7f7',
   },
-  header: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 10,
-    textAlign: 'center',
-  },
-  busItem: {
-    marginBottom: 20,
-    padding: 10,
-    borderWidth: 1,
+  busContainer: {
+    marginTop: 16,
+    backgroundColor: '#fff',
+    padding: 16,
     borderRadius: 8,
-    borderColor: '#ddd',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   busNumber: {
     fontSize: 18,
     fontWeight: 'bold',
+    marginBottom: 8,
   },
-  routeTitle: {
-    marginTop: 5,
-    fontWeight: '600',
+  routeHeader: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: 12,
   },
-  routeInfo: {
+  routeText: {
     fontSize: 14,
     color: '#555',
+  },
+  notFoundText: {
+    marginTop: 20,
+    color: 'red',
+    fontSize: 16,
+    textAlign: 'center',
   },
 });
 
