@@ -1,0 +1,15 @@
+{
+    "buses": {
+      "bus1": {
+        "busNumber": "123",
+        "latitude": 13.05,
+        "longitude": 80.25
+      },
+      "bus2": {
+        "busNumber": "124",
+        "latitude": 13.08,
+        "longitude": 80.28
+      }
+    }
+  }
+  
