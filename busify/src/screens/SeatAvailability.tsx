@@ -5,11 +5,13 @@ import { database } from '../firebase/config'; // Adjust this import
 import { Picker } from '@react-native-picker/picker'; // Import from the new package
 
 const SeatAvailabilityScreen = () => {
-  const [busNumber, setBusNumber] = useState<string>('');
-  const [seatsData, setSeatsData] = useState<any>(null); // Store the seat data here
+  const [busNumber, setBusNumber] = useState<string>(''); // Store selected bus number
+  const [seatsData, setSeatsData] = useState<any>(null); // Store seat data
+  const [loading, setLoading] = useState<boolean>(false); // Track loading state
 
   // Function to fetch seat data from Firebase based on bus number
   const fetchSeatData = async (busNumber: string) => {
+    setLoading(true); // Set loading state to true when starting fetch
     const busRef = ref(database, `buses/${busNumber}`);
     const snapshot = await get(busRef);
     if (snapshot.exists()) {
@@ -18,13 +20,8 @@ const SeatAvailabilityScreen = () => {
     } else {
       alert('Bus not found!');
     }
+    setLoading(false); // Set loading state to false after fetch
   };
-
-  useEffect(() => {
-    if (busNumber) {
-      fetchSeatData(busNumber); // Fetch data when bus number is selected
-    }
-  }, [busNumber]);
 
   return (
     <View style={styles.container}>
@@ -49,8 +46,17 @@ const SeatAvailabilityScreen = () => {
         <Picker.Item label="Bus 110" value="bus10" />
       </Picker>
 
+      {/* Search Button */}
+      <Button
+        title="Search"
+        onPress={() => busNumber && fetchSeatData(busNumber)} // Fetch seat data when button is pressed
+        disabled={busNumber === '' || loading} // Disable button when no bus is selected or while loading
+      />
+
       {/* Display seat availability */}
-      {seatsData ? (
+      {loading ? (
+        <Text style={styles.loadingText}>Loading...</Text> // Show loading message
+      ) : seatsData ? (
         <View style={styles.seatContainer}>
           <Text>Total Seats: {seatsData.totalSeats}</Text>
           <Text>Available Seats: {seatsData.availableSeats}</Text>
@@ -67,7 +73,7 @@ const SeatAvailabilityScreen = () => {
           </ScrollView>
         </View>
       ) : (
-        <Text style={styles.noBusText}>Select a bus to view seat availability</Text>
+        <Text style={styles.noBusText}>Select a bus and click Search to view seat availability</Text>
       )}
     </View>
   );
@@ -107,6 +113,12 @@ const styles = StyleSheet.create({
     margin: 5,
     borderRadius: 5,
   },
+  loadingText: {
+    textAlign: 'center',
+    color: '#888',
+    fontSize: 16,
+    marginTop: 20,
+  },
   noBusText: {
     textAlign: 'center',
     color: '#888',
@@ -116,4 +128,3 @@ const styles = StyleSheet.create({
 });
 
 export default SeatAvailabilityScreen;
-//

@@ -19,7 +19,12 @@
       "alerts": [
         { "message": "Bus 101 is delayed due to traffic. Estimated delay: 10 minutes.", "time": "8:00 AM" },
         { "message": "Driver change at Stop 2. Please be aware.", "time": "8:30 AM" }
-      ]
+      ],
+      "seats": {
+        "totalSeats": 40,
+        "availableSeats": 10,
+        "seatStatus": [true, true, false, true, false, true, true, false, true, true, false, false, true, true, true, false, true, false, true, true, true, true, false, false, true, true, true, false, true, false, true, true, true, false, true, true, false, true, false, true]
+      }
     },
     "bus2": {
       "busNumber": "Bus 102",
@@ -37,7 +42,12 @@
       },
       "alerts": [
         { "message": "Bus 102 has a flat tire at Stop B. Please wait for a few minutes.", "time": "7:45 AM" }
-      ]
+      ],
+      "seats": {
+        "totalSeats": 40,
+        "availableSeats": 5,
+        "seatStatus": [true, true, true, true, false, true, false, false, true, true, false, true, true, false, true, false, true, true, false, false, true, true, false, true, true, true, false, false, false, true, true, false, true, false, true, true, false, true, false, true]
+      }
     },
     "bus3": {
       "busNumber": "Bus 103",
@@ -55,7 +65,12 @@
       },
       "alerts": [
         { "message": "Bus 103 is running on time today. Enjoy your ride!", "time": "8:00 AM" }
-      ]
+      ],
+      "seats": {
+        "totalSeats": 40,
+        "availableSeats": 20,
+        "seatStatus": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+      }
     },
     "bus4": {
       "busNumber": "Bus 104",
@@ -71,7 +86,12 @@
           { "stop": "Stop 2", "time": "7:30 PM" }
         ]
       },
-      "alerts": []
+      "alerts": [],
+      "seats": {
+        "totalSeats": 40,
+        "availableSeats": 30,
+        "seatStatus": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+      }
     },
     "bus5": {
       "busNumber": "Bus 105",
@@ -89,7 +109,12 @@
       },
       "alerts": [
         { "message": "Bus 105 is fully occupied. Next available bus is Bus 106.", "time": "8:00 AM" }
-      ]
+      ],
+      "seats": {
+        "totalSeats": 40,
+        "availableSeats": 0,
+        "seatStatus": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+      }
     },
     "bus6": {
       "busNumber": "Bus 106",
@@ -105,7 +130,12 @@
           { "stop": "Stop B", "time": "7:15 PM" }
         ]
       },
-      "alerts": []
+      "alerts": [],
+      "seats": {
+        "totalSeats": 40,
+        "availableSeats": 20,
+        "seatStatus": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+      }
     },
     "bus7": {
       "busNumber": "Bus 107",
@@ -123,7 +153,12 @@
       },
       "alerts": [
         { "message": "Bus 107 is delayed by 5 minutes due to a traffic jam.", "time": "7:10 AM" }
-      ]
+      ],
+      "seats": {
+        "totalSeats": 40,
+        "availableSeats": 12,
+        "seatStatus": [true, true, true, true, true, true, true, true, true, false, false, false, true, false, true, true, false, true, false, false, true, true, true, true, false, true, true, true, true, true, true, false, true, true, false, true, true, false, true, true]
+      }
     },
     "bus8": {
       "busNumber": "Bus 108",
@@ -139,41 +174,12 @@
           { "stop": "Stop 2", "time": "8:00 PM" }
         ]
       },
-      "alerts": []
-    },
-    "bus9": {
-      "busNumber": "Bus 109",
-      "latitude": 13.0870,
-      "longitude": 80.2780,
-      "route": {
-        "morning": [
-          { "stop": "Stop 1", "time": "8:30 AM" },
-          { "stop": "Stop 2", "time": "9:00 AM" }
-        ],
-        "evening": [
-          { "stop": "Stop 1", "time": "6:30 PM" },
-          { "stop": "Stop 2", "time": "7:00 PM" }
-        ]
-      },
-      "alerts": [
-        { "message": "Bus 109 is running 10 minutes ahead of schedule.", "time": "7:30 AM" }
-      ]
-    },
-    "bus10": {
-      "busNumber": "Bus 110",
-      "latitude": 13.0880,
-      "longitude": 80.2790,
-      "route": {
-        "morning": [
-          { "stop": "Stop 1", "time": "7:15 AM" },
-          { "stop": "Stop 2", "time": "7:45 AM" }
-        ],
-        "evening": [
-          { "stop": "Stop 1", "time": "5:15 PM" },
-          { "stop": "Stop 2", "time": "5:45 PM" }
-        ]
-      },
-      "alerts": []
+      "alerts": [],
+      "seats": {
+        "totalSeats": 40,
+        "availableSeats": 15,
+        "seatStatus": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, true, true, false, true, false, true, true, false, true, true, true, false, false, true, true]
+      }
     }
   }
 }
