@@ -2,6 +2,10 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 const StudentDashboard = ({ navigation }: any) => {
+  const handleLogout = () => {
+    navigation.navigate('Login');  // Navigate back to the login screen
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
@@ -51,6 +55,11 @@ const StudentDashboard = ({ navigation }: any) => {
           <Text style={styles.gridText}>Search Route</Text>
         </TouchableOpacity>
       </View>
+
+      {/* Logout Button */}
+      <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+        <Text style={styles.logoutButtonText}>Logout</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -90,6 +99,18 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     textAlign: 'center',
+  },
+  logoutButton: {
+    backgroundColor: '#ff4d4d',
+    padding: 15,
+    borderRadius: 10,
+    marginTop: 30,
+    width: '80%',
+    alignItems: 'center',
+  },
+  logoutButtonText: {
+    color: '#fff',
+    fontSize: 16,
   },
 });
 
